@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YouTube Digest — Light</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+<div class="wrap">
+    <header class="topbar">
+        <div class="logo-box">
+            <svg width="42" height="42" viewBox="0 0 70 70" fill="none">
+                <!-- YouTube-like red container -->
+                <rect x="5" y="15" width="60" height="40" rx="14" fill="#FF0000"/>
+                <!-- Play triangle -->
+                <polygon points="30,25 30,45 48,35" fill="white"/>
+            </svg>
+            <span class="logo-text">YouTube Digest</span>
+        </div>
+    </header>
+
+
+    <main class="card">
+        <form id="searchForm" class="controls">
+            <div class="inputs">
+                <input id="interests" type="text"
+                       placeholder="Interests — e.g. ai,gardening,retro_gaming"
+                       required/>
+
+                <input id="maxResults" type="number" min="1" max="1000" value="50"/>
+            </div>
+
+            <div class="actions">
+                <button id="runBtn" type="submit">Search</button>
+                <button id="clearBtn" type="button" class="muted">Clear</button>
+            </div>
+        </form>
+
+        <div class="meta" id="status">Enter interests and press Fetch. Max 1000 results.</div>
+    </main>
+
+    <section id="resultsArea" class="grid">
+        <div class="empty card" id="emptyMsg">No results yet — try a query above.</div>
+    </section>
+
+    <footer>
+        <div class="card small">
+            Tip: Make sure add proper input <code></code>.
+        </div>
+    </footer>
+</div>
+
+<!-- Modal -->
+<div id="playerModal" class="player-modal" aria-hidden="true">
+    <div class="player-backdrop" id="playerBackdrop"></div>
+    <div class="player-content card">
+        <button id="playerClose" class="player-close">×</button>
+        <div class="player-frame-wrap">
+            <iframe id="playerIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
